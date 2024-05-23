@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
   loadCaptchaEnginge,
@@ -33,6 +34,9 @@ else {
   }
   return (
     <div>
+      <Helmet>
+        <title>Login | Bistro Boss Restaurant</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left md:w-1/2">
@@ -77,20 +81,34 @@ else {
               <div className="form-control">
                 <LoadCanvasTemplate />
                 <input
-                ref={captchaRef}
+                  ref={captchaRef}
                   type="text"
                   placeholder="Type the text above"
                   name="captcha"
                   className="input input-bordered"
                   required
                 />
-                <button onClick={handleValidateCaptcha} className="btn btn-xs mt-2">Validate</button>
+                <button
+                  onClick={handleValidateCaptcha}
+                  className="btn btn-xs mt-2"
+                >
+                  Validate
+                </button>
               </div>
               <div className="form-control mt-6">
-                <input disabled={disabled} className="btn btn-primary" type="submit" />
+                <input
+                  disabled={disabled}
+                  className="btn btn-primary"
+                  type="submit"
+                />
               </div>
             </form>
-            <p className="text-center mb-4">New Here?<Link className="text-blue-600" to={"/register"}>Create an account</Link></p>
+            <p className="text-center mb-4">
+              New Here?
+              <Link className="text-blue-600" to={"/register"}>
+                Create an account
+              </Link>
+            </p>
           </div>
         </div>
       </div>
